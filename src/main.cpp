@@ -27,7 +27,7 @@ void deplacementSnake(vector<vector<Vector3f>>& tableauMatrixCube,int& tailleSna
     
     // Vector3f initCoord{tableauMatrixCube[0][0]};
     // initCoord+= direction;
-     //genererCube(tableauMatrixCube[0],initCoord,20);
+    //genererCube(tableauMatrixCube[0],initCoord,20);
 }
 
 bool timeValid(Time elapsed,int conditionTime)
@@ -37,9 +37,18 @@ bool timeValid(Time elapsed,int conditionTime)
 
 void loopWindow(RenderWindow& window)
 {
+    //Direction de rotation 
+    Vector3f pivotPointAxe{0,0,0};
+    //Génération de la forme géométrique
+    vector<Vector3f> matrixCube{17};
+    Vector3f initCoord{500, 300, 0};
+
+    RepereLocal repere; // Ajout du repère local
+    initialiserRepereLocal(repere,initCoord); // 
+
     //Stockage du serpent dans un tableau de matrice
     vector<vector<Vector3f>> tableauDeMatrixCube(500);
-    int tailleSnake{1};
+    int tailleSnake{10};
     Vector3f directionSnake{0,0,0};
 
     //Gestion du temps pour le déplacement snake
@@ -47,15 +56,6 @@ void loopWindow(RenderWindow& window)
     sf::Clock clock; 
     sf::Time elapsed;
 
-    
-    //Direction de rotation 
-    Vector3f pivotPointAxe{0,0,0};
-
-    //Génération de la forme géométrique
-    vector<Vector3f> matrixCube{17};
-    Vector3f initCoord{500, 300, 0};
-
-    
     TableauCube(initCoord,tableauDeMatrixCube,20,500);
 
     Event event;
@@ -70,9 +70,9 @@ void loopWindow(RenderWindow& window)
             elapsed = clock.restart(); 
         }
        
-        eventKey(window,tableauDeMatrixCube, pivotPointAxe,directionSnake);
+        eventKey(window,tableauDeMatrixCube,pivotPointAxe,event);
         dessinerCube(tableauDeMatrixCube,window,tailleSnake);
-        tableauPivot(tableauDeMatrixCube,pivotPointAxe);
+        tableauPivot(tableauDeMatrixCube, pivotPointAxe, repere);
 
         window.display();
     }
