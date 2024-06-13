@@ -35,10 +35,8 @@ bool timeValid(Time elapsed,int conditionTime)
      return elapsed.asMilliseconds() >= conditionTime;
 }
 
-void loopWindow(RenderWindow& window)
+void loopWindow(RenderWindow& window,Event& event)
 {
-    //Direction de rotation 
-    Vector3f pivotPointAxe{0,0,0};
     //Génération de la forme géométrique
     vector<Vector3f> matrixCube{17};
     Vector3f initCoord{500, 300, 0};
@@ -57,11 +55,13 @@ void loopWindow(RenderWindow& window)
     sf::Time elapsed;
 
     TableauCube(initCoord,tableauDeMatrixCube,20,500);
-
-    Event event;
+    
+    //Direction de rotation 
+    Vector3f pivotPointAxe{0,0,0};
     while(window.isOpen())
     {
        
+
         window.clear();
         elapsed = clock.getElapsedTime();
         if(timeValid(elapsed,conditionTime))
@@ -72,7 +72,7 @@ void loopWindow(RenderWindow& window)
        
         eventKey(window,tableauDeMatrixCube,pivotPointAxe,directionSnake,event);
         dessinerCube(tableauDeMatrixCube,window,tailleSnake);
-        tableauPivot(tableauDeMatrixCube, pivotPointAxe, repere);
+        tableauPivot(tableauDeMatrixCube,pivotPointAxe);
 
         window.display();
     }
@@ -80,8 +80,8 @@ void loopWindow(RenderWindow& window)
 
 int main()
 {
-     
+    Event event;
     RenderWindow window(VideoMode(1300,800),"Matrix");  
     window.setFramerateLimit(60);
-    loopWindow(window);
+    loopWindow(window,event);
 }
