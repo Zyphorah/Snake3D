@@ -16,9 +16,9 @@ void deplacementSnake(vector<vector<Vector3f>>& tableauMatrixCube)
     cout<< "teste";
 }
 
-bool timeValid(Time elapsed,int conditionTime)
+bool timeValid(Time& elapsed,int conditionTime)
 {
-    if(elapsed == conditionTime)
+    if(elapsed.asMilliseconds()== conditionTime)
     {
         return true;
     }
@@ -33,7 +33,7 @@ void loopWindow(RenderWindow& window)
     //Gestion du temps pour le déplacement snake
     int conditionTime = 1000;
     sf::Clock clock; 
-    sf::Time elapsed = clock.restart(); 
+    sf::Time elapsed;
 
     //Stockage du serpent dans un tableau de matrice
     vector<vector<Vector3f>> tableauDeMatrixCube{10};
@@ -58,6 +58,7 @@ void loopWindow(RenderWindow& window)
         if(timeValid)
         {
             deplacementSnake(tableauDeMatrixCube);
+            elapsed = clock.restart(); 
         }
        
         eventKey(window,tableauDeMatrixCube, pivotPointAxe);
