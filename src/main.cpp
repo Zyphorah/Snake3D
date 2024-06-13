@@ -16,16 +16,9 @@ void deplacementSnake(vector<vector<Vector3f>>& tableauMatrixCube)
     cout<< "teste";
 }
 
-bool timeValid(Time& elapsed,int conditionTime)
+bool timeValid(Time elapsed,int conditionTime)
 {
-    if(elapsed.asMilliseconds()== conditionTime)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+     return elapsed.asMilliseconds() >= conditionTime;
 }
 
 void loopWindow(RenderWindow& window)
@@ -55,7 +48,7 @@ void loopWindow(RenderWindow& window)
     {
        
         window.clear();
-        if(timeValid)
+        if(timeValid(elapsed,conditionTime))
         {
             deplacementSnake(tableauDeMatrixCube);
             elapsed = clock.restart(); 
