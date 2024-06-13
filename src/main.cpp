@@ -70,7 +70,7 @@ void loopWindow(RenderWindow& window)
             elapsed = clock.restart(); 
         }
        
-        eventKey(window,tableauDeMatrixCube,pivotPointAxe,event);
+        eventKey(window,tableauDeMatrixCube,pivotPointAxe,directionSnake,event);
         dessinerCube(tableauDeMatrixCube,window,tailleSnake);
         tableauPivot(tableauDeMatrixCube, pivotPointAxe, repere);
 

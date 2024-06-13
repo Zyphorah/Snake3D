@@ -1,46 +1,47 @@
 #include "../include/keycontrole.h"
 #include "../include/Matrice3D.h"
 
-void eventKey(RenderWindow& window,vector<vector<Vector3f>>& tableauDeMatrixCube,Vector3f& pivotPointAxe,Event& event)
+void eventKey(RenderWindow& window, vector<vector<Vector3f>>& tableauDeMatrixCube, Vector3f& pivotPointAxe, Vector3f& direction, Event& event)
 {
     while (window.pollEvent(event))
     {
-        if(event.type == Event::Closed)
+        switch (event.type)
         {
-            window.close();
-        } 
-        else if(event.type == Event :: KeyPressed)
-          {
+            case Event::Closed:
+                window.close();
+                break;
 
-          //Rotation pivot
-          if(Keyboard::isKeyPressed(Keyboard::Up))  
-          {
-            pivotPointAxe.x = -1;     
-          }
-          if(Keyboard::isKeyPressed(Keyboard::Down))  
-          {
-            pivotPointAxe.x = 1;  
-          }
-          if(Keyboard::isKeyPressed(Keyboard::Left))  
-          {
-            pivotPointAxe.y = -1;  
-          }
-          if(Keyboard::isKeyPressed(Keyboard::Right))  
-          {
-            pivotPointAxe.y = 1;  
-          }
-          }
-          else if(event.type == Event::KeyReleased)
-          {
-            if(event.key.code == Keyboard::Up || event.key.code == Keyboard::Down)
-            {
-              pivotPointAxe.x = 0;
-            }
-            if(event.key.code == Keyboard::Left || event.key.code == Keyboard::Right)
-            {
-              pivotPointAxe.y = 0;
-            }
-          }
-    
+            case Event::KeyPressed:
+                switch (event.key.code)
+                {
+                    case Keyboard::Up:
+                        pivotPointAxe.x = -1;
+                        break;
+                    case Keyboard::Down:
+                        pivotPointAxe.x = 1;
+                        break;
+                    case Keyboard::Left:
+                        pivotPointAxe.y = -1;
+                        break;
+                    case Keyboard::Right:
+                        pivotPointAxe.y = 1;
+                        break;
+                }
+                break;
+
+            case Event::KeyReleased:
+                switch (event.key.code)
+                {
+                    case Keyboard::Up:
+                    case Keyboard::Down:
+                        pivotPointAxe.x = 0;
+                        break;
+                    case Keyboard::Left:
+                    case Keyboard::Right:
+                        pivotPointAxe.y = 0;
+                        break;
+                }
+                break;
+        }
     } 
 }
