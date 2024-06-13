@@ -3,7 +3,7 @@
 
 
 
-void eventKey(RenderWindow& window,vector<vector<Vector3f>>& tableauDeMatrixCube,Vector3f& pivotPointAxe)
+void eventKey(RenderWindow& window,vector<vector<Vector3f>>& tableauDeMatrixCube,Vector3f& pivotPointAxe,Vector3f& direction)
 {
 
     Event event;
@@ -16,9 +16,9 @@ void eventKey(RenderWindow& window,vector<vector<Vector3f>>& tableauDeMatrixCube
         else if(event.type == Event :: KeyPressed)
           {
 
-            if(Keyboard :: isKeyPressed(Keyboard :: S))
+            if(Keyboard :: isKeyPressed(Keyboard :: A))
             {
-                
+                direction.x=-200;
             }
             if(Keyboard :: isKeyPressed(Keyboard :: W))
             {

@@ -2,18 +2,32 @@
 #include "../include/Matrice3D.h"
 #include "../include/keycontrole.h"
 
-void dessinerCube(vector<vector<Vector3f>>& tableauMatrixCube,RenderWindow& window)
+void translation(vector<Vector3f>& points, const Vector3f& vecteurTranslation) 
 {
-    for(int i = 0; i< tableauMatrixCube.size();i++)
+    for (auto& point : points) 
+     {
+        point.x += vecteurTranslation.x;
+        point.y += vecteurTranslation.y;
+        point.z += vecteurTranslation.z;
+    }
+}
+
+
+void dessinerCube(vector<vector<Vector3f>>& tableauMatrixCube,RenderWindow& window,int tailleSnake)
+{
+    for(int i = 0;i<tailleSnake;i++)
     {
          vector<Vector2f> projectionCube = projectionOrthographique(tableauMatrixCube[i],window);
          dessinerVecteur(projectionCube,window); 
     }    
 }
 
-void deplacementSnake(vector<vector<Vector3f>>& tableauMatrixCube)
+void deplacementSnake(vector<vector<Vector3f>>& tableauMatrixCube,int& tailleSnake,Vector3f& direction)
 {
-    cout<< "teste";
+    
+    // Vector3f initCoord{tableauMatrixCube[0][0]};
+    // initCoord+= direction;
+     //genererCube(tableauMatrixCube[0],initCoord,20);
 }
 
 bool timeValid(Time elapsed,int conditionTime)
@@ -23,14 +37,17 @@ bool timeValid(Time elapsed,int conditionTime)
 
 void loopWindow(RenderWindow& window)
 {
+    //Stockage du serpent dans un tableau de matrice
+    vector<vector<Vector3f>> tableauDeMatrixCube(500);
+    int tailleSnake{1};
+    Vector3f directionSnake{0,0,0};
+
     //Gestion du temps pour le déplacement snake
     int conditionTime = 1000;
     sf::Clock clock; 
     sf::Time elapsed;
 
-    //Stockage du serpent dans un tableau de matrice
-    vector<vector<Vector3f>> tableauDeMatrixCube{10};
-
+    
     //Direction de rotation 
     Vector3f pivotPointAxe{0,0,0};
 
@@ -39,23 +56,22 @@ void loopWindow(RenderWindow& window)
     Vector3f initCoord{500, 300, 0};
 
     
-    TableauCube(initCoord,tableauDeMatrixCube,20,10);
-
-    tableauDeMatrixCube[0]=matrixCube;
+    TableauCube(initCoord,tableauDeMatrixCube,20,500);
 
     Event event;
     while(window.isOpen())
     {
        
         window.clear();
+        elapsed = clock.getElapsedTime();
         if(timeValid(elapsed,conditionTime))
         {
-            deplacementSnake(tableauDeMatrixCube);
+            deplacementSnake(tableauDeMatrixCube,tailleSnake,directionSnake);
             elapsed = clock.restart(); 
         }
        
-        eventKey(window,tableauDeMatrixCube, pivotPointAxe);
-        dessinerCube(tableauDeMatrixCube,window);
+        eventKey(window,tableauDeMatrixCube, pivotPointAxe,directionSnake);
+        dessinerCube(tableauDeMatrixCube,window,tailleSnake);
         tableauPivot(tableauDeMatrixCube,pivotPointAxe);
 
         window.display();
