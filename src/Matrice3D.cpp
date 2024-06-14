@@ -1,23 +1,5 @@
 #include "../include/Matrice3D.h"
 
-
-// Fonction utiliser pour faire un repaire de coordonné x,y,z, elle serviras pour la rotation qui est utiliser comme camera
-void initialiserRepereLocal(RepereLocal& repere, const Vector3f& initCoord) 
-{
-    repere.i = Vector3f(1, 0, 0); // Axe X local
-    repere.j = Vector3f(0, 1, 0); // Axe Y local
-    repere.k = Vector3f(0, 0, 1); // Axe Z local
-}
-
-//Translation locale sur les vector x,y,z
-void translationLocale(vector<Vector3f>& points, const RepereLocal& repere, const Vector3f& translation) 
-{
-    for (auto& point : points) 
-    {
-        point += repere.i * translation.x + repere.j * translation.y + repere.k * translation.z;
-    }
-}
-
 void genererCube(vector<Vector3f>& matrixCube,Vector3f& initCoord,int taille)
 {
      /* 
@@ -50,7 +32,7 @@ void genererCube(vector<Vector3f>& matrixCube,Vector3f& initCoord,int taille)
     {
         //Récupération du premier point
         matrixCube[i] = matrixCube[i-5];
-        matrixCube[i].z = taille;
+        matrixCube[i].z += taille;
     }
     //Génération des points relier au point A,B,C,D
     //Exemple 
@@ -84,69 +66,51 @@ vector<Vector2f> projectionOrthographique(const vector<Vector3f>& points3D, Rend
     return points2D;
 }
 
-
-//Permet de faire une rotation sur un point x, y ou z, z est la profondeur
-void pivot(vector<Vector3f>& vecteur, float angle, const Vector3f axe) 
+//Permet de faire une rotation sur un point x, y ou z, z est la profondeurvoid pivot(vector<Vector3f>& vecteur, Vector2f& angle, const Vector3f axe) 
+void pivot(vector<Vector3f>& vecteur, Vector2f& angle, const Vector3f axe) 
 {
     Vector3f centre{500, 300, 100};
-    float rad = angle * M_PI / 180; // Conversion de degrés en radians
-     
-    for (int i = 0; i < vecteur.size(); i++)
+    float radX = angle.x * M_PI / 180; // Conversion de degrés en radians
+    float radY = angle.y * M_PI / 180;
+
+    // Précalcul des sinus et cosinus
+    float cosY = cos(radY), sinY = sin(radY);
+    float cosX = cos(radX), sinX = sin(radX);
+
+    for (auto& point : vecteur)
     {
         // Translation pour placer le centre de rotation à l'origine
-        vecteur[i].x -= centre.x;
-        vecteur[i].y -= centre.y;
-        vecteur[i].z -= centre.z;
+        point.x -= centre.x;
+        point.y -= centre.y;
+        point.z -= centre.z;
 
         // Rotation autour de l'axe Y
-        if(axe.y == 1)
+        if(axe.y != 0)
         {
-            float x = vecteur[i].x * cos(rad) - vecteur[i].z * sin(rad);
-            float z = vecteur[i].x * sin(rad) + vecteur[i].z * cos(rad);
-            vecteur[i].x = x;
-            vecteur[i].z = z;
-        }
-        
-        if(axe.y == -1)     
-        {
-            float x = vecteur[i].x * cos(rad) + vecteur[i].z * sin(rad);
-            float z = vecteur[i].x * -sin(rad) + vecteur[i].z * cos(rad);
-            vecteur[i].x = x;
-            vecteur[i].z = z;
+            float x = point.x * cosY + point.z * sinY;
+            float z = -point.x * sinY + point.z * cosY;
+            point.x = x;
+            point.z = z;
         }
 
         // Rotation autour de l'axe X
-        if(axe.x == 1)
+        if(axe.x != 0)
         {
-            float y = vecteur[i].y * cos(rad) - vecteur[i].z * sin(rad);
-            float z = vecteur[i].y * sin(rad) + vecteur[i].z * cos(rad);
-            vecteur[i].y = y;
-            vecteur[i].z = z;
-        }
-        if(axe.x == -1)
-        {
-            float y = vecteur[i].y * cos(rad) + vecteur[i].z * sin(rad);
-            float z = -vecteur[i].y * sin(rad) + vecteur[i].z * cos(rad);
-            vecteur[i].y = y;
-            vecteur[i].z = z;
-        }
-        // Rotation autour de l'axe Z
-        if(axe.z == 1)
-        {
-            float x = vecteur[i].x * cos(rad) - vecteur[i].y * sin(rad);
-            float y = vecteur[i].x * sin(rad) + vecteur[i].y * cos(rad);
-            vecteur[i].x = x;
-            vecteur[i].y = y;
+            float y = point.y * cosX + point.z * sinX;
+            float z = -point.y * sinX + point.z * cosX;
+            point.y = y;
+            point.z = z;
         }
 
         // Retranslation pour remettre le centre de rotation à sa position initiale
-        vecteur[i].x += centre.x;
-        vecteur[i].y += centre.y;
-        vecteur[i].z += centre.z;
+        point.x += centre.x;
+        point.y += centre.y;
+        point.z += centre.z;
     }
 }
 
-// Dessiner les vecteurs du cub
+
+// Dessiner les vecteurs du cube
 void dessinerVecteur(vector<Vector2f>&matrixCube,RenderWindow& window)
 {
     for (int i = 0; i < matrixCube.size() - 1; i++) 
@@ -164,13 +128,33 @@ void dessinerVecteur(vector<Vector2f>&matrixCube,RenderWindow& window)
         }
 }
 
-void tableauPivot(vector<vector<Vector3f>>& tableauDeMatrixCube,Vector3f pivotPointAxe)
+//Pivote le corp du snake
+void tableauPivot(vector<vector<Vector3f>>& tableauDeMatrixCube,Vector3f pivotPointAxe,Vector2f& angle,Vector3f& DirectionPivot)
 {
+    //Condition pour gérer l'angle
+    if(pivotPointAxe.x ==1)
+    {
+        angle.x++;
+    }
+    else if (pivotPointAxe.x == -1)
+    {
+       angle.x--;
+    }
+    else if(pivotPointAxe.y ==1)
+    {
+        angle.y++;
+    }
+    else if (pivotPointAxe.y == -1)
+    {
+       angle.y--;
+    }
+    
     for(int i =0 ; i < tableauDeMatrixCube.size();i++)
     {
-        pivot(tableauDeMatrixCube[i],1,pivotPointAxe);
+        pivot(tableauDeMatrixCube[i],angle,DirectionPivot);
     }
 }
+
 void TableauCube(Vector3f initCoord,vector<vector<Vector3f>>& tableauDeMatrixCube,int taille,int nombreCube)
 {
     for(int i =0;i<nombreCube;i++)
