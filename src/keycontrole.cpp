@@ -57,12 +57,12 @@ void eventKey(RenderWindow& window, Vector3f& pivotPointAxe,Vector3f&directionPi
                         direction.z = 20;
                         break; 
                     case Keyboard :: E:
-                        direction.y = -10;
+                        direction.y = 10;
                         direction.x = 0;
                         direction.z = 0;
                         break;
                     case Keyboard :: Q:
-                        direction.y = 10;
+                        direction.y = -10;
                         direction.x = 0;
                         direction.z = 0;
                         break;
