@@ -103,7 +103,7 @@ bool timeValid(Time elapsed,int conditionTime)
      return elapsed.asMilliseconds() >= conditionTime;
 }
 
-void loopWindow(RenderWindow& window,Event& event)
+void loopWindow(RenderWindow& window,Event& event,Sprite& spriteFond)
 {
     //Angle de rotation pour la camera.
     Vector2f angleRotation{501,-376};
@@ -151,10 +151,10 @@ void loopWindow(RenderWindow& window,Event& event)
         eventKey(window,pivotPointAxe,DirectionPivot,direction);
         collision(tableauDeMatrixCube,window,tailleSnake);
         teleportTeteSnake(tableauDeMatrixCube);
-        dessinerCube(tableauDeMatrixCube,window,tailleSnake,pivotPointAxe,angleRotation,DirectionPivot,LimiteGrille);
 
-       
-        
+        window.draw(spriteFond);
+        dessinerCube(tableauDeMatrixCube,window,tailleSnake,pivotPointAxe,angleRotation,DirectionPivot,LimiteGrille);
+             
         window.display();
     }
 }
@@ -163,6 +163,22 @@ int main()
 {
     Event event;
     RenderWindow window(VideoMode(1300,800),"Matrix");  
+   
+
+    Texture textureFond;
+    if (!textureFond.loadFromFile("background.png")) 
+    {
+        cout<< "Votre font d'écran ne c'est pas charger correctement";
+        return -1;
+    }
+    
+    // Créez un sprite pour le fond
+    sf::Sprite spriteFond(textureFond);
+    spriteFond.setScale(
+    float(window.getSize().x) / spriteFond.getTexture()->getSize().x,
+    float(window.getSize().y) / spriteFond.getTexture()->getSize().y
+    );
+
     window.setFramerateLimit(60);
-    loopWindow(window,event);
+    loopWindow(window,event,spriteFond);
 }
