@@ -1,8 +1,5 @@
 # Jeu Snake 3D en C++ avec SFML
-<video width="320" height="240" controls>
-  <source src="Vidéo.mp4" type="video/mp4">
-  Votre navigateur ne supporte pas la balise vidéo.
-</video>
+!vidéo.mp4
 
 ## Description
 Ce projet est un jeu Snake 3D réalisé en C++ en utilisant la bibliothèque graphique SFML. L'objectif était de créer un rendu 3D sans utiliser de bibliothèque 3D ou de moteur de jeu, mais en appliquant uniquement l'algèbre linéaire pour développer le jeu.
