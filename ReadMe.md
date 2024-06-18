@@ -1,4 +1,8 @@
 # Jeu Snake 3D en C++ avec SFML
+<video width="320" height="240" controls>
+  <source src="Vidéo.mp4" type="video/mp4">
+  Votre navigateur ne supporte pas la balise vidéo.
+</video>
 
 ## Description
 Ce projet est un jeu Snake 3D réalisé en C++ en utilisant la bibliothèque graphique SFML. L'objectif était de créer un rendu 3D sans utiliser de bibliothèque 3D ou de moteur de jeu, mais en appliquant uniquement l'algèbre linéaire pour développer le jeu.
@@ -34,7 +38,7 @@ cd Snake3D
 
  g++ src/main.cpp src/Matrice3D.cpp src/keycontrole.cpp -o Snake3D -lsfml-graphics -lsfml-window -lsfml-system
 
- ## Utiliser debian pour compiler en executable window 10 
+ ## Utilisez Debian pour compiler un exécutable window 10 
 
  g++ -I"sfml/include" src/main.cpp src/Matrice3D.cpp src/keycontrole.cpp -o Snake3D.exe -L"sfml/lib" -lsfml-graphics -lsfml-window -lsfml-system
 
