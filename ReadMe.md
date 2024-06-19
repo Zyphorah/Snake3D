@@ -35,10 +35,6 @@ cd Snake3D
 
  g++ src/main.cpp src/Matrice3D.cpp src/keycontrole.cpp -o Snake3D -lsfml-graphics -lsfml-window -lsfml-system
 
- ## Utilisez Debian pour compiler un exécutable window 10 
-
- g++ -I"sfml/include" src/main.cpp src/Matrice3D.cpp src/keycontrole.cpp -o Snake3D.exe -L"sfml/lib" -lsfml-graphics -lsfml-window -lsfml-system
-
 6. Exécutez le jeu :
 
 ./snake3D
