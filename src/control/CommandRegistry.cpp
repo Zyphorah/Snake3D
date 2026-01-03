@@ -8,20 +8,23 @@ CommandRegistry::~CommandRegistry()
 {
 }
 
+// Suppression de la méthode executeCommand, non utilisée
+
 bool CommandRegistry::executePressedCommand(Keyboard::Key key)
 {
-    return executeCommand(pressedCommands, key);
+    auto it = pressedCommands.find(key);
+    if (it != pressedCommands.end() && it->second)
+    {
+        it->second();
+        return true;
+    }
+    return false;
 }
 
 bool CommandRegistry::executeReleasedCommand(Keyboard::Key key)
 {
-    return executeCommand(releasedCommands, key);
-}
-
-bool CommandRegistry::executeCommand(std::map<Keyboard::Key, CommandFunction>& commandMap, Keyboard::Key key)
-{
-    auto it = commandMap.find(key);
-    if (it != commandMap.end() && it->second)
+    auto it = releasedCommands.find(key);
+    if (it != releasedCommands.end() && it->second)
     {
         it->second();
         return true;

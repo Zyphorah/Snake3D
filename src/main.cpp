@@ -122,12 +122,15 @@ int main()
     RenderWindow window(VideoMode(1300, 800), "Matrix");  
 
     Texture textureFond;
-    if (!textureFond.loadFromFile("background.png")) 
-    {
-        cout << "Erreur: le fond d'écran ne s'est pas chargé correctement" << endl;
-        return -1;
+    if (!textureFond.loadFromFile("background.png")) {
+        // Essai dans le dossier parent
+        if (!textureFond.loadFromFile("../background.png")) {
+            cout << "Erreur: le fond d'écran ne s'est pas chargé correctement (background.png ou ../background.png introuvable)" << endl;
+            return -1;
+        } else {
+            cout << "Info: background.png non trouvé, mais ../background.png chargé avec succès." << endl;
+        }
     }
-    
     sf::Sprite spriteFond(textureFond);
     spriteFond.setScale(
         float(window.getSize().x) / spriteFond.getTexture()->getSize().x,

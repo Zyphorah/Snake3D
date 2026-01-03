@@ -19,7 +19,6 @@ void InputHandler::handleInput()
             case Event::KeyPressed:
                 registry.executePressedCommand(event.key.code);
                 break;
-            
             case Event::KeyReleased:
                 registry.executeReleasedCommand(event.key.code);
                 break;

@@ -6,10 +6,6 @@
 
 using namespace sf;
 
-/**
- * InputHandler : Gestionnaire d'entrées utilisant le registre de commandes
- * S'occupe de traduire les événements SFML en commandes via le registre
- */
 class InputHandler
 {
 private:

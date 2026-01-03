@@ -11,7 +11,10 @@ void setupGameControls(CommandRegistry& registry,
         [&pivotPointAxe, &directionPivot]() {
             pivotPointAxe.x = -1;
             directionPivot.x = -1;
-        },
+        }
+    );
+    registry.injectReleasedCommand(
+        Keyboard::Up,
         [&pivotPointAxe]() {
             pivotPointAxe.x = 0;
         }
@@ -22,7 +25,10 @@ void setupGameControls(CommandRegistry& registry,
         [&pivotPointAxe, &directionPivot]() {
             pivotPointAxe.x = 1;
             directionPivot.x = 1;
-        },
+        }
+    );
+    registry.injectReleasedCommand(
+        Keyboard::Down,
         [&pivotPointAxe]() {
             pivotPointAxe.x = 0;
         }
@@ -33,7 +39,10 @@ void setupGameControls(CommandRegistry& registry,
         [&pivotPointAxe, &directionPivot]() {
             pivotPointAxe.y = -1;
             directionPivot.y = -1;
-        },
+        }
+    );
+    registry.injectReleasedCommand(
+        Keyboard::Left,
         [&pivotPointAxe]() {
             pivotPointAxe.y = 0;
         }
@@ -44,60 +53,55 @@ void setupGameControls(CommandRegistry& registry,
         [&pivotPointAxe, &directionPivot]() {
             pivotPointAxe.y = 1;
             directionPivot.y = 1;
-        },
+        }
+    );
+    registry.injectReleasedCommand(
+        Keyboard::Right,
         [&pivotPointAxe]() {
             pivotPointAxe.y = 0;
         }
     );
     
     // Touches de mouvement du serpent - injection simple avec une seule lambda
-    registry.injectPressedCommand(
+    registry.injectCommand(
         Keyboard::A,
         [&direction]() {
             direction = Vector3f(-20, 0, 0);
         }
     );
     
-    registry.injectPressedCommand(
+    registry.injectCommand(
         Keyboard::D,
         [&direction]() {
             direction = Vector3f(20, 0, 0);
         }
     );
     
-    registry.injectPressedCommand(
+    registry.injectCommand(
         Keyboard::W,
         [&direction]() {
             direction = Vector3f(0, 0, -20);
         }
     );
     
-    registry.injectPressedCommand(
+    registry.injectCommand(
         Keyboard::S,
         [&direction]() {
             direction = Vector3f(0, 0, 20);
         }
     );
     
-    registry.injectPressedCommand(
+    registry.injectCommand(
         Keyboard::E,
         [&direction]() {
             direction = Vector3f(0, 10, 0);
         }
     );
     
-    registry.injectPressedCommand(
+    registry.injectCommand(
         Keyboard::Q,
         [&direction]() {
             direction = Vector3f(0, -10, 0);
-        }
-    );
-    
-    // Touche de réinitialisation
-    registry.injectPressedCommand(
-        Keyboard::Z,
-        [&pivotPointAxe]() {
-            pivotPointAxe = Vector3f(0, 0, 0);
         }
     );
 }
