@@ -41,7 +41,9 @@
 *.dwo
 
 # build 
-/build
+build/
+/build/
+build/*
 
 # CMake files
 CMakeFiles/
