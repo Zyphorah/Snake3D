@@ -1,53 +1,53 @@
-# Jeu Snake 3D en C++ avec SFML
+# 3D Snake Game in C++ with SFML
 ![alt text](Game.png)
 
 ## Description
-Ce projet est un jeu Snake 3D réalisé en C++ en utilisant la bibliothèque graphique SFML. L'objectif était de créer un rendu 3D sans utiliser de bibliothèque 3D ou de moteur de jeu, mais en appliquant uniquement l'algèbre linéaire pour développer le jeu.
+This project is a 3D Snake game written in C++ using the SFML graphics library. The goal was to create a 3D rendering without using any 3D library or game engine, relying solely on linear algebra to develop the game.
 
-## Fonctionnalités
-- Rendu 3D de la grille de jeu et du serpent.
-- Déplacement et téléportation du serpent dans un espace 3D.
-- Gestion des collisions et de la croissance du serpent.
-- Rotation et projection orthographique pour visualiser le jeu en 3D.
+## Features
+- 3D rendering of the game grid and the snake.
+- Movement and teleportation of the snake in 3D space.
+- Collision handling and snake growth.
+- Rotation and orthographic projection to visualize the game in 3D.
 
-## Dépendances
+## Dependencies
 - SFML (Simple and Fast Multimedia Library)
 
-## Installation sur Debian
+## Installation on Debian
 
-1. Mettez à jour la liste des paquets :
+1. Update the package list:
 
 sudo apt update
 
-2. Installez la bibliothèque SFML :
+2. Install the SFML library:
 
 sudo apt install libsfml-dev
 
-3. Clonez le dépôt du projet :
+3. Clone the project repository:
 
 git clone https://github.com/Zyphorah/Snake3D.git
 
-4. Naviguez dans le répertoire du projet :
+4. Change into the project directory:
 
 cd Snake3D
 
-5. Compilez le projet avec g++;
+5. Compile the project with g++:
 
  g++ src/main.cpp src/Matrice3D.cpp src/keycontrole.cpp -o Snake3D -lsfml-graphics -lsfml-window -lsfml-system
 
-6. Exécutez le jeu :
+6. Run the game:
 
 ./snake3D
 
-### Contrôle du Serpent
-- **A** : Déplacement du serpent vers la droite.
-- **D** : Déplacement du serpent vers la gauche.
-- **W** : Déplacement du serpent vers l'avant (axe vertical).
-- **S** : Déplacement du serpent vers l'arrière (sens inverse de W).
-- **Q** : Descente du serpent (réduction de l'altitude).
-- **E** : Montée du serpent (augmentation de l'altitude).
+### Snake Controls
+- A: Move the snake to the right.
+- D: Move the snake to the left.
+- W: Move the snake forward (vertical axis).
+- S: Move the snake backward (opposite of W).
+- Q: Move the snake down (decrease altitude).
+- E: Move the snake up (increase altitude).
 
-Le serpent grandit d'un cube après avoir parcouru quatre cases. Faites attention à ne pas heurter le corps du serpent pendant que vous le déplacez.
+The snake grows by one cube after moving four squares. Be careful not to collide with the snake's body while moving.
 
-### Contrôle de la Caméra
-- Utilisez les **touches directionnelles** pour ajuster l'angle de vue de la caméra.
+### Camera Controls
+- Use the arrow keys to adjust the camera viewing angle.

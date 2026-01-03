@@ -1,8 +1,12 @@
-#include "../SFML/Graphics.hpp"
-#include <string>
-#include <iostream>
-#include <vector>
-#include <cmath> 
+#ifndef MAIN_H
+#define MAIN_H
 
-using namespace std;
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <cmath>
+#include <iostream>
+
 using namespace sf;
+using namespace std;
+
+#endif
