@@ -24,12 +24,14 @@ link_directories(
 add_executable(Snake3D
     src/main.cpp
     src/CubeRenderer.cpp
-    src/keycontrole.cpp
     src/control/CommandRegistry.cpp
     src/control/InputHandler.cpp
-    src/control/GameControls.cpp
     src/matrix/RotationMatrixX.cpp
     src/matrix/RotationMatrixY.cpp
+    src/logic/snake/Snake.cpp
+    src/logic/snake/SnakeMovement.cpp
+    src/logic/snake/SnakeCollision.cpp
+    src/logic/snake/SnakeController.cpp
 )
 
 target_link_libraries(Snake3D

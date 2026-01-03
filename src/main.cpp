@@ -1,27 +1,12 @@
 #include "../include/main.h"
 #include "../include/CubeRenderer.h"
-#include "../include/keycontrole.h"
+#include "../include/logic/snake/Snake.h"
+#include "../include/logic/snake/SnakeMovement.h"
+#include "../include/logic/snake/SnakeCollision.h"
+#include "../include/logic/snake/SnakeController.h"
 
 // Instance globale de CubeRenderer
 CubeRenderer cubeRenderer(Vector3f(500, 300, 100));
-
-void teleportTeteSnake(vector<vector<Vector3f>>& SnakeCorps)
-{
-    Vector3f& pos = SnakeCorps[0][0];
-    
-    // Téléportation sur axe X
-    if(pos.x < 100) pos.x = 880;
-    else if(pos.x > 880) pos.x = 100;
-    // Téléportation sur axe Y
-    else if(pos.y > 550) pos.y = 150;
-    else if(pos.y < 150) pos.y = 550;
-    // Téléportation sur axe Z
-    else if(pos.z < -400) pos.z = 380;
-    else if(pos.z > 380) pos.z = -400;
-    else return;
-    
-    cubeRenderer.genererCube(SnakeCorps[0], pos, 20);
-}
 
 void générerlimiteGrille(vector<Vector3f>& LimiteGrille, Vector3f initCoord, int taille)
 {
@@ -29,44 +14,25 @@ void générerlimiteGrille(vector<Vector3f>& LimiteGrille, Vector3f initCoord, i
     cubeRenderer.genererCube(LimiteGrille, initCoord, taille);
 }
 
-void collision(vector<vector<Vector3f>> tableauMatrixCube, RenderWindow& window, int tailleSnake)
-{
-    for(int i = 1; i < tailleSnake; i++)
-    {
-        if(tableauMatrixCube[0] == tableauMatrixCube[i])
-            window.close();
-    }
-}
-
-void dessinerCube(vector<vector<Vector3f>> tableauMatrixCube, RenderWindow& window, int tailleSnake, Vector3f pivotPointAxe, Vector2f& angleRotation, Vector3f& DirectionPivot, vector<vector<Vector3f>> LimiteGrille)
+void dessinerCube(Snake& snake, RenderWindow& window, Vector3f pivotPointAxe, Vector2f& angleRotation, Vector3f& DirectionPivot, vector<vector<Vector3f>> LimiteGrille)
 {   
-    cubeRenderer.tableauPivot(tableauMatrixCube, pivotPointAxe, angleRotation, DirectionPivot);
     cubeRenderer.tableauPivot(LimiteGrille, pivotPointAxe, angleRotation, DirectionPivot);
 
     vector<Vector2f> grilleCube = cubeRenderer.projectionOrthographique(LimiteGrille[0], window);
     cubeRenderer.dessinerVecteur(grilleCube, window);
     
-    for(int i = 0; i < tailleSnake; i++)
-    {
-        vector<Vector2f> projectionCube = cubeRenderer.projectionOrthographique(tableauMatrixCube[i], window);
-        cubeRenderer.dessinerVecteur(projectionCube, window); 
-    }    
-}
-
-void deplacementSnake(vector<vector<Vector3f>>& tableauMatrixCube, int& tailleSnake, Vector3f& direction, int& grandirSnake) 
-{
-    Vector3f initCoord = tableauMatrixCube[0][0];
-
-    for (int i = tableauMatrixCube.size() - 1; i > 0; --i) 
-        tableauMatrixCube[i] = tableauMatrixCube[i - 1];
-
-    initCoord += direction;
-    cubeRenderer.genererCube(tableauMatrixCube[0], initCoord, 20);
+    // Créer une copie du corps du serpent pour l'affichage
+    // Cela évite de modifier les coordonnées réelles du serpent avec la rotation de la caméra
+    vector<vector<Vector3f>> bodyCopy = snake.getBody();
     
-    if(++grandirSnake == 4)
+    // Appliquer la rotation à la copie
+    cubeRenderer.tableauPivot(bodyCopy, pivotPointAxe, angleRotation, DirectionPivot);
+    
+    // Dessiner la copie
+    for(int i = 0; i < snake.getSize(); i++)
     {
-        tailleSnake++;
-        grandirSnake = 0;
+        vector<Vector2f> projectionCube = cubeRenderer.projectionOrthographique(bodyCopy[i], window);
+        cubeRenderer.dessinerVecteur(projectionCube, window); 
     }
 }
 
@@ -78,19 +44,13 @@ bool timeValid(Time elapsed, int conditionTime)
 void loopWindow(RenderWindow& window, Sprite& spriteFond)
 {
     Vector2f angleRotation{501, -376};
-    vector<Vector3f> matrixCube{17};
     Vector3f initCoord{500, 300, 0};
 
-    vector<vector<Vector3f>> tableauDeMatrixCube(1000);
-    int tailleSnake{3};
-    int grandirSnake{0};
-    Vector3f direction{-20, 0, 0};
+    Snake snake(initCoord, 3, 1000, cubeRenderer);
 
     int conditionTime = 100;
     sf::Clock clock; 
     sf::Time elapsed;
-
-    cubeRenderer.TableauCube(initCoord, tableauDeMatrixCube, 20, 500);
 
     vector<vector<Vector3f>> LimiteGrille(1);
     Vector3f initCoordGrille{100, 150, -400};
@@ -98,6 +58,9 @@ void loopWindow(RenderWindow& window, Sprite& spriteFond)
 
     Vector3f pivotPointAxe{0, 0, 0};
     Vector3f DirectionPivot{1, 1, 0};
+    
+    // Initialisation du contrôleur
+    SnakeController controller(snake, window, pivotPointAxe, DirectionPivot);
 
     while(window.isOpen())
     {
@@ -105,16 +68,16 @@ void loopWindow(RenderWindow& window, Sprite& spriteFond)
         elapsed = clock.getElapsedTime();
         if(timeValid(elapsed, conditionTime))
         {
-            deplacementSnake(tableauDeMatrixCube, tailleSnake, direction, grandirSnake);
+            SnakeMovement::process(snake);
             elapsed = clock.restart(); 
         }
 
-        eventKey(window, pivotPointAxe, DirectionPivot, direction);
-        collision(tableauDeMatrixCube, window, tailleSnake);
-        teleportTeteSnake(tableauDeMatrixCube);
+        controller.handleInput();
+        SnakeCollision::check(snake, window);
+        SnakeMovement::teleport(snake);
 
         window.draw(spriteFond);
-        dessinerCube(tableauDeMatrixCube, window, tailleSnake, pivotPointAxe, angleRotation, DirectionPivot, LimiteGrille);
+        dessinerCube(snake, window, pivotPointAxe, angleRotation, DirectionPivot, LimiteGrille);
              
         window.display();
     }

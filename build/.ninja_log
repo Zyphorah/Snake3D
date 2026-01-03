@@ -1,0 +1,14 @@
+# ninja log v5
+5	1008	1767408968158135691	CMakeFiles/Snake3D.dir/src/logic/snake/SnakeController.cpp.o	e99864931a2c2fc0
+3	735	1767409226559554006	CMakeFiles/Snake3D.dir/src/logic/snake/Snake.cpp.o	58920ab592ee19c7
+5	738	1767408967896136309	CMakeFiles/Snake3D.dir/src/logic/snake/SnakeCollision.cpp.o	5a6d932858203c52
+3	168	1767409468801046434	Snake3D	8f2f25149ed405ce
+3	1163	1767407953175375093	CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.o	b9609945243415
+3	993	1767407953006375352	CMakeFiles/Snake3D.dir/src/control/CommandRegistry.cpp.o	b8461f08d2ba0c4b
+4	724	1767408967881136345	CMakeFiles/Snake3D.dir/src/logic/snake/SnakeMovement.cpp.o	bbab0c5d2788a11c
+2	976	1767409226798553491	CMakeFiles/Snake3D.dir/src/main.cpp.o	57636bb3b51cc7f1
+4	773	1767407952788375687	CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o	c0523e6571f2dda0
+2	759	1767407952772375712	CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o	ce0ac99ca6686edf
+3	649	1767407952667812955	CMakeFiles/Snake3D.dir/src/control/InputHandler.cpp.o	8028ee374483378d
+2	649	1767407952665375876	CMakeFiles/Snake3D.dir/src/keycontrole.cpp.o	8f01342bf55c2b56
+4	642	1767407952650375899	CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o	681373b83fea77d1
