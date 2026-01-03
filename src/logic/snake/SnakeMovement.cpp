@@ -14,7 +14,7 @@ void SnakeMovement::process(Snake& snake)
         tableauMatrixCube[i] = tableauMatrixCube[i - 1];
 
     initCoord += direction;
-    cubeRenderer.genererCube(tableauMatrixCube[0], initCoord, 20);
+    cubeRenderer.generateCube(tableauMatrixCube[0], initCoord, 20);
     
     if(++grandirSnake == 4)
     {
@@ -41,5 +41,5 @@ void SnakeMovement::teleport(Snake& snake)
     else if(pos.z > 380) pos.z = -400;
     else return;
     
-    cubeRenderer.genererCube(SnakeCorps[0], pos, 20);
+    cubeRenderer.generateCube(SnakeCorps[0], pos, 20);
 }

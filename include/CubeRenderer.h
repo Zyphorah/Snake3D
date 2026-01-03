@@ -15,33 +15,33 @@ class CubeRenderer
         static const int CUBE_VERTICES = 17;
         
 
-        void genererSommets(vector<Vector3f>& corners, const Vector3f& initCoord, int taille);
+        void generateVertices(vector<Vector3f>& corners, const Vector3f& initCoord, int size);
       
-        vector<int> obtenirCheminTracé();
+        vector<int> getDrawingPath();
         
-        void construireBuffer(vector<Vector3f>& matrixCube, const vector<Vector3f>& corners, const vector<int>& path);
+        void buildBuffer(vector<Vector3f>& matrixCube, const vector<Vector3f>& corners, const vector<int>& path);
 
     public:
         CubeRenderer(const Vector3f& centre = Vector3f(500, 300, 100));
         ~CubeRenderer() = default;
         
-        void genererCube(vector<Vector3f>& matrixCube, Vector3f& initCoord, int taille);
+        void generateCube(vector<Vector3f>& matrixCube, Vector3f& initCoord, int size);
         
-        vector<Vector2f> projectionOrthographique(const vector<Vector3f>& points3D, RenderWindow& window);
+        vector<Vector2f> orthographicProjection(const vector<Vector3f>& points3D, RenderWindow& window);
         
-        void pivot(vector<Vector3f>& vecteur, Vector2f& angle, const Vector3f axe);
+        void rotate(vector<Vector3f>& vecteur, Vector2f& angle, const Vector3f axe);
         
-        void dessinerVecteur(vector<Vector2f>& matrixCube, RenderWindow& window);
+        void drawLine(vector<Vector2f>& matrixCube, RenderWindow& window);
         
-        void tableauPivot(vector<vector<Vector3f>>& tableauDeMatrixCube, 
+        void rotateMatrix(vector<vector<Vector3f>>& tableauDeMatrixCube, 
                         Vector3f pivotPointAxe, 
                         Vector2f& angle, 
                         Vector3f& DirectionPivot);
         
-        void TableauCube(Vector3f initCoord, 
+        void generateCubeMatrix(Vector3f initCoord, 
                         vector<vector<Vector3f>>& tableauDeMatrixCube, 
-                        int taille, 
-                        int nombreCube);
+                        int size, 
+                        int numberOfCubes);
         
         void setRotationCentre(const Vector3f& centre);
 };

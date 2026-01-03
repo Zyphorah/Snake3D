@@ -12,9 +12,8 @@ class Snake {
 public:
     Snake(Vector3f startPos, int initialSize, int maxCapacity, CubeRenderer& renderer);
 
-    void draw(RenderWindow& window);
+    void render(RenderWindow& window);
     
-    // Getters returning references to allow modification by logic classes
     vector<vector<Vector3f>>& getBody();
     int& getSizeRef();
     int& getGrowthRef();

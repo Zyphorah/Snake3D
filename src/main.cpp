@@ -8,40 +8,40 @@
 // Instance globale de CubeRenderer
 CubeRenderer cubeRenderer(Vector3f(500, 300, 100));
 
-void générerlimiteGrille(vector<Vector3f>& LimiteGrille, Vector3f initCoord, int taille)
+void generateGridBoundary(vector<Vector3f>& LimiteGrille, Vector3f initCoord, int size)
 {
     LimiteGrille.resize(17);
-    cubeRenderer.genererCube(LimiteGrille, initCoord, taille);
+    cubeRenderer.generateCube(LimiteGrille, initCoord, size);
 }
 
-void dessinerCube(Snake& snake, RenderWindow& window, Vector3f pivotPointAxe, Vector2f& angleRotation, Vector3f& DirectionPivot, vector<vector<Vector3f>> LimiteGrille)
+void renderSnakeCube(Snake& snake, RenderWindow& window, Vector3f pivotPointAxe, Vector2f& angleRotation, Vector3f& DirectionPivot, vector<vector<Vector3f>> LimiteGrille)
 {   
-    cubeRenderer.tableauPivot(LimiteGrille, pivotPointAxe, angleRotation, DirectionPivot);
+    cubeRenderer.rotateMatrix(LimiteGrille, pivotPointAxe, angleRotation, DirectionPivot);
 
-    vector<Vector2f> grilleCube = cubeRenderer.projectionOrthographique(LimiteGrille[0], window);
-    cubeRenderer.dessinerVecteur(grilleCube, window);
+    vector<Vector2f> grilleCube = cubeRenderer.orthographicProjection(LimiteGrille[0], window);
+    cubeRenderer.drawLine(grilleCube, window);
     
     // Créer une copie du corps du serpent pour l'affichage
     // Cela évite de modifier les coordonnées réelles du serpent avec la rotation de la caméra
     vector<vector<Vector3f>> bodyCopy = snake.getBody();
     
     // Appliquer la rotation à la copie
-    cubeRenderer.tableauPivot(bodyCopy, pivotPointAxe, angleRotation, DirectionPivot);
+    cubeRenderer.rotateMatrix(bodyCopy, pivotPointAxe, angleRotation, DirectionPivot);
     
     // Dessiner la copie
     for(int i = 0; i < snake.getSize(); i++)
     {
-        vector<Vector2f> projectionCube = cubeRenderer.projectionOrthographique(bodyCopy[i], window);
-        cubeRenderer.dessinerVecteur(projectionCube, window); 
+        vector<Vector2f> projectionCube = cubeRenderer.orthographicProjection(bodyCopy[i], window);
+        cubeRenderer.drawLine(projectionCube, window); 
     }
 }
 
-bool timeValid(Time elapsed, int conditionTime)
+bool isTimeValid(Time elapsed, int conditionTime)
 {
     return elapsed.asMilliseconds() >= conditionTime;
 }
 
-void loopWindow(RenderWindow& window, Sprite& spriteFond)
+void gameLoop(RenderWindow& window, Sprite& backgroundSprite)
 {
     Vector2f angleRotation{501, -376};
     Vector3f initCoord{500, 300, 0};
@@ -54,7 +54,7 @@ void loopWindow(RenderWindow& window, Sprite& spriteFond)
 
     vector<vector<Vector3f>> LimiteGrille(1);
     Vector3f initCoordGrille{100, 150, -400};
-    générerlimiteGrille(LimiteGrille[0], initCoordGrille, 800);
+    generateGridBoundary(LimiteGrille[0], initCoordGrille, 800);
 
     Vector3f pivotPointAxe{0, 0, 0};
     Vector3f DirectionPivot{1, 1, 0};
@@ -66,7 +66,7 @@ void loopWindow(RenderWindow& window, Sprite& spriteFond)
     {
         window.clear();
         elapsed = clock.getElapsedTime();
-        if(timeValid(elapsed, conditionTime))
+        if(isTimeValid(elapsed, conditionTime))
         {
             SnakeMovement::process(snake);
             elapsed = clock.restart(); 
@@ -76,8 +76,8 @@ void loopWindow(RenderWindow& window, Sprite& spriteFond)
         SnakeCollision::check(snake, window);
         SnakeMovement::teleport(snake);
 
-        window.draw(spriteFond);
-        dessinerCube(snake, window, pivotPointAxe, angleRotation, DirectionPivot, LimiteGrille);
+        window.draw(backgroundSprite);
+        renderSnakeCube(snake, window, pivotPointAxe, angleRotation, DirectionPivot, LimiteGrille);
              
         window.display();
     }
@@ -97,12 +97,12 @@ int main()
             cout << "Info: background.png non trouvé, mais ../background.png chargé avec succès." << endl;
         }
     }
-    sf::Sprite spriteFond(textureFond);
-    spriteFond.setScale(
-        float(window.getSize().x) / spriteFond.getTexture()->getSize().x,
-        float(window.getSize().y) / spriteFond.getTexture()->getSize().y
+    sf::Sprite backgroundSprite(textureFond);
+    backgroundSprite.setScale(
+        float(window.getSize().x) / backgroundSprite.getTexture()->getSize().x,
+        float(window.getSize().y) / backgroundSprite.getTexture()->getSize().y
     );
 
     window.setFramerateLimit(60);
-    loopWindow(window, spriteFond);
+    gameLoop(window, backgroundSprite);
 }

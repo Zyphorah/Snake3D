@@ -4,15 +4,15 @@ Snake::Snake(Vector3f startPos, int initialSize, int maxCapacity, CubeRenderer& 
     : size(initialSize), growthCounter(0), direction(-20, 0, 0), renderer(rendererRef)
 {
     body.resize(maxCapacity);
-    renderer.TableauCube(startPos, body, 20, 500); 
+    renderer.generateCubeMatrix(startPos, body, 20, 500); 
 }
 
-void Snake::draw(RenderWindow& window)
+void Snake::render(RenderWindow& window)
 {
     for(int i = 0; i < size; i++)
     {
-        vector<Vector2f> projectionCube = renderer.projectionOrthographique(body[i], window);
-        renderer.dessinerVecteur(projectionCube, window); 
+        vector<Vector2f> projectionCube = renderer.orthographicProjection(body[i], window);
+        renderer.drawLine(projectionCube, window); 
     }
 }
 
