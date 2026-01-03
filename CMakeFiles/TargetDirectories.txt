@@ -1,3 +1,0 @@
-/home/etudiant/Snake3D/CMakeFiles/Snake3D.dir
-/home/etudiant/Snake3D/CMakeFiles/edit_cache.dir
-/home/etudiant/Snake3D/CMakeFiles/rebuild_cache.dir
