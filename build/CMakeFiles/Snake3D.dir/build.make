@@ -83,19 +83,19 @@ CMakeFiles/Snake3D.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Snake3D.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/etudiant/Snake3D/src/main.cpp -o CMakeFiles/Snake3D.dir/src/main.cpp.s
 
-CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o: CMakeFiles/Snake3D.dir/flags.make
-CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o: /home/etudiant/Snake3D/src/Matrice3D.cpp
-CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o: CMakeFiles/Snake3D.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/etudiant/Snake3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o -MF CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o.d -o CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o -c /home/etudiant/Snake3D/src/Matrice3D.cpp
+CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o: CMakeFiles/Snake3D.dir/flags.make
+CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o: /home/etudiant/Snake3D/src/CubeRenderer.cpp
+CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o: CMakeFiles/Snake3D.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/etudiant/Snake3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o -MF CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o.d -o CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o -c /home/etudiant/Snake3D/src/CubeRenderer.cpp
 
-CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/etudiant/Snake3D/src/Matrice3D.cpp > CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.i
+CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/etudiant/Snake3D/src/CubeRenderer.cpp > CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.i
 
-CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/etudiant/Snake3D/src/Matrice3D.cpp -o CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.s
+CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/etudiant/Snake3D/src/CubeRenderer.cpp -o CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.s
 
 CMakeFiles/Snake3D.dir/src/keycontrole.cpp.o: CMakeFiles/Snake3D.dir/flags.make
 CMakeFiles/Snake3D.dir/src/keycontrole.cpp.o: /home/etudiant/Snake3D/src/keycontrole.cpp
@@ -153,27 +153,59 @@ CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/etudiant/Snake3D/src/control/GameControls.cpp -o CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.s
 
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o: CMakeFiles/Snake3D.dir/flags.make
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o: /home/etudiant/Snake3D/src/matrix/RotationMatrixX.cpp
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o: CMakeFiles/Snake3D.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/etudiant/Snake3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o -MF CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o.d -o CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o -c /home/etudiant/Snake3D/src/matrix/RotationMatrixX.cpp
+
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/etudiant/Snake3D/src/matrix/RotationMatrixX.cpp > CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.i
+
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/etudiant/Snake3D/src/matrix/RotationMatrixX.cpp -o CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.s
+
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: CMakeFiles/Snake3D.dir/flags.make
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/src/matrix/RotationMatrixY.cpp
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: CMakeFiles/Snake3D.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/etudiant/Snake3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o -MF CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o.d -o CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o -c /home/etudiant/Snake3D/src/matrix/RotationMatrixY.cpp
+
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/etudiant/Snake3D/src/matrix/RotationMatrixY.cpp > CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.i
+
+CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/etudiant/Snake3D/src/matrix/RotationMatrixY.cpp -o CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.s
+
 # Object files for target Snake3D
 Snake3D_OBJECTS = \
 "CMakeFiles/Snake3D.dir/src/main.cpp.o" \
-"CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o" \
+"CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o" \
 "CMakeFiles/Snake3D.dir/src/keycontrole.cpp.o" \
 "CMakeFiles/Snake3D.dir/src/control/CommandRegistry.cpp.o" \
 "CMakeFiles/Snake3D.dir/src/control/InputHandler.cpp.o" \
-"CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.o"
+"CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.o" \
+"CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o" \
+"CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o"
 
 # External object files for target Snake3D
 Snake3D_EXTERNAL_OBJECTS =
 
 Snake3D: CMakeFiles/Snake3D.dir/src/main.cpp.o
-Snake3D: CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o
+Snake3D: CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o
 Snake3D: CMakeFiles/Snake3D.dir/src/keycontrole.cpp.o
 Snake3D: CMakeFiles/Snake3D.dir/src/control/CommandRegistry.cpp.o
 Snake3D: CMakeFiles/Snake3D.dir/src/control/InputHandler.cpp.o
 Snake3D: CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.o
+Snake3D: CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o
+Snake3D: CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o
 Snake3D: CMakeFiles/Snake3D.dir/build.make
 Snake3D: CMakeFiles/Snake3D.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/etudiant/Snake3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Snake3D"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/etudiant/Snake3D/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Snake3D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Snake3D.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -129,29 +129,29 @@ Snake3D/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/build
 .PHONY : Snake3D/fast
 
-src/Matrice3D.o: src/Matrice3D.cpp.o
-.PHONY : src/Matrice3D.o
+src/CubeRenderer.o: src/CubeRenderer.cpp.o
+.PHONY : src/CubeRenderer.o
 
 # target to build an object file
-src/Matrice3D.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o
-.PHONY : src/Matrice3D.cpp.o
+src/CubeRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o
+.PHONY : src/CubeRenderer.cpp.o
 
-src/Matrice3D.i: src/Matrice3D.cpp.i
-.PHONY : src/Matrice3D.i
+src/CubeRenderer.i: src/CubeRenderer.cpp.i
+.PHONY : src/CubeRenderer.i
 
 # target to preprocess a source file
-src/Matrice3D.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.i
-.PHONY : src/Matrice3D.cpp.i
+src/CubeRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.i
+.PHONY : src/CubeRenderer.cpp.i
 
-src/Matrice3D.s: src/Matrice3D.cpp.s
-.PHONY : src/Matrice3D.s
+src/CubeRenderer.s: src/CubeRenderer.cpp.s
+.PHONY : src/CubeRenderer.s
 
 # target to generate assembly for a file
-src/Matrice3D.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.s
-.PHONY : src/Matrice3D.cpp.s
+src/CubeRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.s
+.PHONY : src/CubeRenderer.cpp.s
 
 src/control/CommandRegistry.o: src/control/CommandRegistry.cpp.o
 .PHONY : src/control/CommandRegistry.o
@@ -273,6 +273,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/matrix/RotationMatrixX.o: src/matrix/RotationMatrixX.cpp.o
+.PHONY : src/matrix/RotationMatrixX.o
+
+# target to build an object file
+src/matrix/RotationMatrixX.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o
+.PHONY : src/matrix/RotationMatrixX.cpp.o
+
+src/matrix/RotationMatrixX.i: src/matrix/RotationMatrixX.cpp.i
+.PHONY : src/matrix/RotationMatrixX.i
+
+# target to preprocess a source file
+src/matrix/RotationMatrixX.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.i
+.PHONY : src/matrix/RotationMatrixX.cpp.i
+
+src/matrix/RotationMatrixX.s: src/matrix/RotationMatrixX.cpp.s
+.PHONY : src/matrix/RotationMatrixX.s
+
+# target to generate assembly for a file
+src/matrix/RotationMatrixX.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.s
+.PHONY : src/matrix/RotationMatrixX.cpp.s
+
+src/matrix/RotationMatrixY.o: src/matrix/RotationMatrixY.cpp.o
+.PHONY : src/matrix/RotationMatrixY.o
+
+# target to build an object file
+src/matrix/RotationMatrixY.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o
+.PHONY : src/matrix/RotationMatrixY.cpp.o
+
+src/matrix/RotationMatrixY.i: src/matrix/RotationMatrixY.cpp.i
+.PHONY : src/matrix/RotationMatrixY.i
+
+# target to preprocess a source file
+src/matrix/RotationMatrixY.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.i
+.PHONY : src/matrix/RotationMatrixY.cpp.i
+
+src/matrix/RotationMatrixY.s: src/matrix/RotationMatrixY.cpp.s
+.PHONY : src/matrix/RotationMatrixY.s
+
+# target to generate assembly for a file
+src/matrix/RotationMatrixY.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Snake3D.dir/build.make CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.s
+.PHONY : src/matrix/RotationMatrixY.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -282,9 +330,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Snake3D"
-	@echo "... src/Matrice3D.o"
-	@echo "... src/Matrice3D.i"
-	@echo "... src/Matrice3D.s"
+	@echo "... src/CubeRenderer.o"
+	@echo "... src/CubeRenderer.i"
+	@echo "... src/CubeRenderer.s"
 	@echo "... src/control/CommandRegistry.o"
 	@echo "... src/control/CommandRegistry.i"
 	@echo "... src/control/CommandRegistry.s"
@@ -300,6 +348,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/matrix/RotationMatrixX.o"
+	@echo "... src/matrix/RotationMatrixX.i"
+	@echo "... src/matrix/RotationMatrixX.s"
+	@echo "... src/matrix/RotationMatrixY.o"
+	@echo "... src/matrix/RotationMatrixY.i"
+	@echo "... src/matrix/RotationMatrixY.s"
 .PHONY : help
 
 

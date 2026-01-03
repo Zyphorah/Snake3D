@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o"
-  "CMakeFiles/Snake3D.dir/src/Matrice3D.cpp.o.d"
+  "CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o"
+  "CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o.d"
   "CMakeFiles/Snake3D.dir/src/control/CommandRegistry.cpp.o"
   "CMakeFiles/Snake3D.dir/src/control/CommandRegistry.cpp.o.d"
   "CMakeFiles/Snake3D.dir/src/control/GameControls.cpp.o"
@@ -11,6 +11,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/Snake3D.dir/src/keycontrole.cpp.o.d"
   "CMakeFiles/Snake3D.dir/src/main.cpp.o"
   "CMakeFiles/Snake3D.dir/src/main.cpp.o.d"
+  "CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o"
+  "CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o.d"
+  "CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o"
+  "CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o.d"
   "Snake3D"
   "Snake3D.pdb"
 )

@@ -1,6 +1,13 @@
-#include "../include/Matrice3D.h"
+#include "../include/CubeRenderer.h"
+#include "../include/matrix/RotationMatrixX.h"
+#include "../include/matrix/RotationMatrixY.h"
 
-void genererCube(vector<Vector3f>& matrixCube, Vector3f& initCoord, int taille)
+CubeRenderer::CubeRenderer(const Vector3f& centre)
+    : rotationCentre(centre)
+{
+}
+
+void CubeRenderer::genererCube(vector<Vector3f>& matrixCube, Vector3f& initCoord, int taille)
 {
     matrixCube[0] = initCoord;
     matrixCube[1] = matrixCube[0] + Vector3f(taille, 0, 0);
@@ -20,7 +27,7 @@ void genererCube(vector<Vector3f>& matrixCube, Vector3f& initCoord, int taille)
     matrixCube[16] = matrixCube[8];
 }
 
-vector<Vector2f> projectionOrthographique(const vector<Vector3f>& points3D, RenderWindow& window) 
+vector<Vector2f> CubeRenderer::projectionOrthographique(const vector<Vector3f>& points3D, RenderWindow& window) 
 {
     vector<Vector2f> points2D(points3D.size());
     for (size_t i = 0; i < points3D.size(); i++) 
@@ -28,37 +35,30 @@ vector<Vector2f> projectionOrthographique(const vector<Vector3f>& points3D, Rend
     return points2D;
 }
 
-void pivot(vector<Vector3f>& vecteur, Vector2f& angle, const Vector3f axe) 
+void CubeRenderer::pivot(vector<Vector3f>& vecteur, Vector2f& angle, const Vector3f axe) 
 {
-    Vector3f centre{500, 300, 100};
     float cosY = cos(angle.y * M_PI / 180), sinY = sin(angle.y * M_PI / 180);
     float cosX = cos(angle.x * M_PI / 180), sinX = sin(angle.x * M_PI / 180);
 
+    // Créer les matrices de rotation
+    RotationMatrixX rotX(cosX, sinX);
+    RotationMatrixY rotY(cosY, sinY);
+
     for (auto& point : vecteur)
     {
-        point -= centre;
+        point -= rotationCentre;
 
         if(axe.y != 0)
-        {
-            float x = point.x * cosY + point.z * sinY;
-            float z = -point.x * sinY + point.z * cosY;
-            point.x = x;
-            point.z = z;
-        }
+            rotY.calculate(point);
 
         if(axe.x != 0)
-        {
-            float y = point.y * cosX + point.z * sinX;
-            float z = -point.y * sinX + point.z * cosX;
-            point.y = y;
-            point.z = z;
-        }
+            rotX.calculate(point);
 
-        point += centre;
+        point += rotationCentre;
     }
 }
 
-void dessinerVecteur(vector<Vector2f>& matrixCube, RenderWindow& window)
+void CubeRenderer::dessinerVecteur(vector<Vector2f>& matrixCube, RenderWindow& window)
 {
     sf::Transform translation;
     translation.translate(-300, 30);
@@ -74,7 +74,10 @@ void dessinerVecteur(vector<Vector2f>& matrixCube, RenderWindow& window)
     }
 }
 
-void tableauPivot(vector<vector<Vector3f>>& tableauDeMatrixCube, Vector3f pivotPointAxe, Vector2f& angle, Vector3f& DirectionPivot)
+void CubeRenderer::tableauPivot(vector<vector<Vector3f>>& tableauDeMatrixCube, 
+                                Vector3f pivotPointAxe, 
+                                Vector2f& angle, 
+                                Vector3f& DirectionPivot)
 {
     if(pivotPointAxe.x == 1) angle.x++;
     else if(pivotPointAxe.x == -1) angle.x--;
@@ -85,12 +88,20 @@ void tableauPivot(vector<vector<Vector3f>>& tableauDeMatrixCube, Vector3f pivotP
         pivot(tableauDeMatrixCube[i], angle, DirectionPivot);
 }
 
-void TableauCube(Vector3f initCoord, vector<vector<Vector3f>>& tableauDeMatrixCube, int taille, int nombreCube)
+void CubeRenderer::TableauCube(Vector3f initCoord, 
+                               vector<vector<Vector3f>>& tableauDeMatrixCube, 
+                               int taille, 
+                               int nombreCube)
 {
     for(int i = 0; i < nombreCube; i++)
     {
         initCoord.x += taille;
-        tableauDeMatrixCube[i].resize(17);
+        tableauDeMatrixCube[i].resize(CUBE_VERTICES);
         genererCube(tableauDeMatrixCube[i], initCoord, taille);
     }  
+}
+
+void CubeRenderer::setRotationCentre(const Vector3f& centre)
+{
+    rotationCentre = centre;
 }
