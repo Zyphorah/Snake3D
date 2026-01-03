@@ -31,13 +31,16 @@ git clone https://github.com/Zyphorah/Snake3D.git
 
 cd Snake3D
 
-5. Compile the project with g++:
+5. Compile the project with CMake:
 
- g++ src/main.cpp src/Matrice3D.cpp src/keycontrole.cpp -o Snake3D -lsfml-graphics -lsfml-window -lsfml-system
+   mkdir -p build
+   cd build
+   cmake ..
+   cmake --build .
 
 6. Run the game:
 
-./snake3D
+   ./Snake3D
 
 ### Snake Controls
 - A: Move the snake to the right.
