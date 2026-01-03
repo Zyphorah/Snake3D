@@ -1,4 +1,4 @@
-#include "../../include/matrix/RotationMatrixX.h"
+#include "../../include/matrix/Rotation/RotationMatrixX.h"
 
 RotationMatrixX::RotationMatrixX(float cosX, float sinX)
     : cosX(cosX), sinX(sinX)

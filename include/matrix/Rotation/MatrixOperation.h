@@ -7,10 +7,10 @@ using namespace sf;
 
 class MatrixOperation
 {
-public:
-    virtual ~MatrixOperation() = default;
-    
-    virtual void calculate(Vector3f& point) = 0;
+    public:
+        virtual ~MatrixOperation() = default;
+        
+        virtual void calculate(Vector3f& point) = 0;
 };
 
 #endif

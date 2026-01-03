@@ -4,9 +4,9 @@
 CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o
  /home/etudiant/Snake3D/src/CubeRenderer.cpp
  /home/etudiant/Snake3D/include/CubeRenderer.h
- /home/etudiant/Snake3D/include/matrix/MatrixOperation.h
- /home/etudiant/Snake3D/include/matrix/RotationMatrixX.h
- /home/etudiant/Snake3D/include/matrix/RotationMatrixY.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixX.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixY.h
  /usr/include/SFML/Config.hpp
  /usr/include/SFML/Graphics.hpp
  /usr/include/SFML/Graphics/BlendMode.hpp
@@ -1884,8 +1884,8 @@ CMakeFiles/Snake3D.dir/src/main.cpp.o
 
 CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o
  /home/etudiant/Snake3D/src/matrix/RotationMatrixX.cpp
- /home/etudiant/Snake3D/include/matrix/MatrixOperation.h
- /home/etudiant/Snake3D/include/matrix/RotationMatrixX.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixX.h
  /usr/include/SFML/Config.hpp
  /usr/include/SFML/Graphics.hpp
  /usr/include/SFML/Graphics/BlendMode.hpp
@@ -2182,8 +2182,8 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o
 
 CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o
  /home/etudiant/Snake3D/src/matrix/RotationMatrixY.cpp
- /home/etudiant/Snake3D/include/matrix/MatrixOperation.h
- /home/etudiant/Snake3D/include/matrix/RotationMatrixY.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h
+ /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixY.h
  /usr/include/SFML/Config.hpp
  /usr/include/SFML/Graphics.hpp
  /usr/include/SFML/Graphics/BlendMode.hpp

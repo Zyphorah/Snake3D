@@ -1,6 +1,6 @@
 #include "../include/CubeRenderer.h"
-#include "../include/matrix/RotationMatrixX.h"
-#include "../include/matrix/RotationMatrixY.h"
+#include "../include/matrix/Rotation/RotationMatrixX.h"
+#include "../include/matrix/Rotation/RotationMatrixY.h"
 
 CubeRenderer::CubeRenderer(const Vector3f& centre)
     : rotationCentre(centre)
@@ -105,3 +105,4 @@ void CubeRenderer::setRotationCentre(const Vector3f& centre)
 {
     rotationCentre = centre;
 }
+

@@ -1,4 +1,4 @@
-#include "../../include/matrix/RotationMatrixY.h"
+#include "../../include/matrix/Rotation/RotationMatrixY.h"
 
 RotationMatrixY::RotationMatrixY(float cosY, float sinY)
     : cosY(cosY), sinY(sinY)

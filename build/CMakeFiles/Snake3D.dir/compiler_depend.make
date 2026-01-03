@@ -3,9 +3,9 @@
 
 CMakeFiles/Snake3D.dir/src/CubeRenderer.cpp.o: /home/etudiant/Snake3D/src/CubeRenderer.cpp \
   /home/etudiant/Snake3D/include/CubeRenderer.h \
-  /home/etudiant/Snake3D/include/matrix/MatrixOperation.h \
-  /home/etudiant/Snake3D/include/matrix/RotationMatrixX.h \
-  /home/etudiant/Snake3D/include/matrix/RotationMatrixY.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixX.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixY.h \
   /usr/include/SFML/Config.hpp \
   /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Graphics/BlendMode.hpp \
@@ -1877,8 +1877,8 @@ CMakeFiles/Snake3D.dir/src/main.cpp.o: /home/etudiant/Snake3D/src/main.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
 
 CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o: /home/etudiant/Snake3D/src/matrix/RotationMatrixX.cpp \
-  /home/etudiant/Snake3D/include/matrix/MatrixOperation.h \
-  /home/etudiant/Snake3D/include/matrix/RotationMatrixX.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixX.h \
   /usr/include/SFML/Config.hpp \
   /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Graphics/BlendMode.hpp \
@@ -2174,8 +2174,8 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixX.cpp.o: /home/etudiant/Snake3D/
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
 
 CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/src/matrix/RotationMatrixY.cpp \
-  /home/etudiant/Snake3D/include/matrix/MatrixOperation.h \
-  /home/etudiant/Snake3D/include/matrix/RotationMatrixY.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h \
+  /home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixY.h \
   /usr/include/SFML/Config.hpp \
   /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Graphics/BlendMode.hpp \
@@ -2595,6 +2595,12 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/c++/13/bits/locale_facets.tcc:
 
+/home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixX.h:
+
+/usr/include/c++/13/bits/istream.tcc:
+
+/usr/include/c++/13/bits/locale_conv.h:
+
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/c++/13/bits/locale_classes.h:
@@ -2650,14 +2656,6 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 /home/etudiant/Snake3D/src/control/InputHandler.cpp:
 
 /usr/include/c++/13/bits/alloc_traits.h:
-
-/usr/include/c++/13/bits/basic_string.h:
-
-/usr/include/SFML/System/Vector3.inl:
-
-/usr/include/c++/13/tr1/poly_laguerre.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/c++/13/bits/basic_ios.tcc:
 
@@ -2729,21 +2727,21 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/SFML/Graphics/VertexBuffer.hpp:
 
+/home/etudiant/Snake3D/include/matrix/Rotation/RotationMatrixY.h:
+
 /usr/include/c++/13/vector:
 
-/usr/include/SFML/Graphics/Sprite.hpp:
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
 
-/usr/include/c++/13/bits/enable_special_members.h:
+/usr/include/SFML/Graphics/Texture.hpp:
 
-/usr/include/SFML/Graphics/Export.hpp:
+/usr/include/c++/13/bits/codecvt.h:
 
-/usr/include/c++/13/ext/aligned_buffer.h:
+/usr/include/c++/13/bits/stl_tree.h:
 
-/usr/include/locale.h:
+/usr/include/SFML/Window/Event.hpp:
 
-/usr/include/libintl.h:
-
-/usr/include/SFML/System/String.hpp:
+/usr/include/SFML/System/String.inl:
 
 /usr/include/SFML/System/ThreadLocalPtr.hpp:
 
@@ -2763,6 +2761,24 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/SFML/Graphics/Font.hpp:
 
+/usr/include/SFML/Graphics/Sprite.hpp:
+
+/usr/include/c++/13/bits/enable_special_members.h:
+
+/usr/include/SFML/Graphics/Export.hpp:
+
+/usr/include/c++/13/ext/aligned_buffer.h:
+
+/usr/include/locale.h:
+
+/usr/include/SFML/Graphics/RenderTexture.hpp:
+
+/home/etudiant/Snake3D/include/keycontrole.h:
+
+/usr/include/SFML/Config.hpp:
+
+/usr/include/c++/13/ctime:
+
 /usr/include/c++/13/bits/locale_facets_nonio.tcc:
 
 /usr/include/SFML/Graphics/Glsl.hpp:
@@ -2779,41 +2795,17 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/c++/13/tr1/poly_hermite.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+/usr/include/c++/13/bits/basic_string.h:
 
-/usr/include/c++/13/bits/charconv.h:
+/usr/include/SFML/System/Vector3.inl:
 
-/usr/include/c++/13/cstdio:
+/usr/include/c++/13/tr1/poly_laguerre.tcc:
 
-/home/etudiant/Snake3D/src/control/GameControls.cpp:
+/usr/include/SFML/System/String.hpp:
 
-/usr/include/SFML/System/Vector2.hpp:
+/usr/include/libintl.h:
 
-/home/etudiant/Snake3D/include/keycontrole.h:
-
-/usr/include/SFML/Config.hpp:
-
-/usr/include/c++/13/ctime:
-
-/usr/include/SFML/Graphics/RenderTexture.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
-
-/usr/include/SFML/Graphics/Texture.hpp:
-
-/usr/include/c++/13/bits/codecvt.h:
-
-/usr/include/c++/13/bits/stl_tree.h:
-
-/usr/include/SFML/Window/Event.hpp:
-
-/usr/include/SFML/System/String.inl:
-
-/usr/include/c++/13/bits/istream.tcc:
-
-/usr/include/c++/13/bits/locale_conv.h:
-
-/home/etudiant/Snake3D/include/matrix/RotationMatrixY.h:
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/SFML/System/Vector3.hpp:
 
@@ -2839,10 +2831,6 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
-/usr/include/SFML/Graphics/View.hpp:
-
-/usr/include/SFML/Graphics/Transformable.hpp:
-
 /usr/include/c++/13/bits/vector.tcc:
 
 /usr/include/c++/13/bits/locale_facets.h:
@@ -2865,13 +2853,15 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/SFML/System/ThreadLocal.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+/usr/include/c++/13/limits:
+
 /usr/include/SFML/System/Export.hpp:
 
 /usr/include/SFML/System/Thread.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/usr/include/c++/13/limits:
+/home/etudiant/Snake3D/include/matrix/Rotation/MatrixOperation.h:
 
 /usr/include/SFML/Graphics/ConvexShape.hpp:
 
@@ -2913,13 +2903,15 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/SFML/Graphics/VertexArray.hpp:
 
+/usr/include/SFML/Graphics/Transformable.hpp:
+
+/usr/include/SFML/Graphics/View.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/asm-generic/errno.h:
 
 /usr/include/asm-generic/errno-base.h:
-
-/home/etudiant/Snake3D/include/matrix/MatrixOperation.h:
 
 /usr/include/c++/13/bits/stl_iterator_base_funcs.h:
 
@@ -2967,9 +2959,17 @@ CMakeFiles/Snake3D.dir/src/matrix/RotationMatrixY.cpp.o: /home/etudiant/Snake3D/
 
 /usr/include/SFML/System/Time.hpp:
 
-/usr/include/c++/13/bits/predefined_ops.h:
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/home/etudiant/Snake3D/include/matrix/RotationMatrixX.h:
+/usr/include/c++/13/bits/charconv.h:
+
+/usr/include/c++/13/cstdio:
+
+/home/etudiant/Snake3D/src/control/GameControls.cpp:
+
+/usr/include/SFML/System/Vector2.hpp:
+
+/usr/include/c++/13/bits/predefined_ops.h:
 
 /usr/include/c++/13/iosfwd:
 
