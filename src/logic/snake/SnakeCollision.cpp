@@ -1,6 +1,7 @@
 #include "../../../include/logic/snake/SnakeCollision.h"
+#include "../../../include/GameState.h"
 
-void SnakeCollision::check(Snake& snake, sf::RenderWindow& window)
+void SnakeCollision::check(Snake& snake, GameState& gameState)
 {
     auto& tableauMatrixCube = snake.getBody();
     int tailleSnake = snake.getSize();
@@ -8,6 +9,6 @@ void SnakeCollision::check(Snake& snake, sf::RenderWindow& window)
     for(int i = 1; i < tailleSnake; i++)
     {
         if(tableauMatrixCube[0] == tableauMatrixCube[i])
-            window.close();
+            gameState.setGameOver();
     }
 }

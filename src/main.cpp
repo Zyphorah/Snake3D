@@ -4,6 +4,9 @@
 #include "../include/logic/snake/SnakeMovement.h"
 #include "../include/logic/snake/SnakeCollision.h"
 #include "../include/logic/snake/SnakeController.h"
+#include "../include/GameMenu.h"
+#include "../include/GameState.h"
+#include "../include/ScoreDisplay.h"
 
 // Instance globale de CubeRenderer
 CubeRenderer cubeRenderer(Vector3f(500, 300, 100));
@@ -61,8 +64,15 @@ void gameLoop(RenderWindow& window, Sprite& backgroundSprite)
     
     // Initialisation du contrôleur
     SnakeController controller(snake, window, pivotPointAxe, DirectionPivot);
+    
+    // Initialisation du menu et state
+    GameMenu gameMenu(window.getSize().x, window.getSize().y);
+    GameState gameState;
+    
+    // Initialisation du score
+    ScoreDisplay scoreDisplay(window.getSize().x, window.getSize().y);
 
-    while(window.isOpen())
+    while(window.isOpen() && gameState.isGameRunning())
     {
         window.clear();
         elapsed = clock.getElapsedTime();
@@ -73,12 +83,64 @@ void gameLoop(RenderWindow& window, Sprite& backgroundSprite)
         }
 
         controller.handleInput();
-        SnakeCollision::check(snake, window);
+        SnakeCollision::check(snake, gameState);
+        
+        if (gameState.isGameOver()) {
+            break;
+        }
+        
         SnakeMovement::teleport(snake);
+        
+        // Update score display
+        scoreDisplay.setScore(snake.getSize());
 
         window.draw(backgroundSprite);
         renderSnakeCube(snake, window, pivotPointAxe, angleRotation, DirectionPivot, LimiteGrille);
+        scoreDisplay.render(window);
+        
+        // Handle mouse events
+        sf::Event event;
+        while(window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+                return;
+            }
+        }
              
+        window.display();
+    }
+    
+    // Show menu when game is over
+    gameMenu.show();
+    
+    // Lambda for restart callback
+    gameMenu.setOnRestartCallback([&]() {
+        gameLoop(window, backgroundSprite);
+    });
+    
+    // Lambda for quit callback
+    gameMenu.setOnQuitCallback([&]() {
+        window.close();
+    });
+    
+    // Menu loop
+    while(window.isOpen())
+    {
+        window.clear();
+        window.draw(backgroundSprite);
+        renderSnakeCube(snake, window, pivotPointAxe, angleRotation, DirectionPivot, LimiteGrille);
+        gameMenu.render(window);
+        
+        sf::Event event;
+        while(window.pollEvent(event)) {
+            if (event.type == sf::Event::MouseButtonPressed) {
+                gameMenu.handleMouseClick(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+            }
+            else if (event.type == sf::Event::Closed) {
+                window.close();
+                return;
+            }
+        }
         window.display();
     }
 }

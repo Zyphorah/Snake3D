@@ -24,6 +24,9 @@ link_directories(
 add_executable(Snake3D
     src/main.cpp
     src/CubeRenderer.cpp
+    src/GameMenu.cpp
+    src/GameState.cpp
+    src/ScoreDisplay.cpp
     src/control/CommandRegistry.cpp
     src/control/InputHandler.cpp
     src/matrix/RotationMatrixX.cpp

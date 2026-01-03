@@ -4,9 +4,11 @@
 #include "Snake.h"
 #include <SFML/Graphics.hpp>
 
+class GameState;
+
 class SnakeCollision {
 public:
-    static void check(Snake& snake, sf::RenderWindow& window);
+    static void check(Snake& snake, GameState& gameState);
 };
 
 #endif
